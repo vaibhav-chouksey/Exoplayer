@@ -2,13 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    //  ADD THE HILT PLUGIN ALIAS
+    alias(libs.plugins.hilt.android)
+    //  THE KSP PLUGIN ALIAS
+    alias(libs.plugins.ksp)
+
 }
 
 android {
     namespace = "com.example.exoplayer"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk{ version = release(36) }
+
 
     defaultConfig {
         applicationId = "com.example.exoplayer"
@@ -62,4 +66,13 @@ dependencies {
 
     //this we used
     implementation(libs.bundles.media3)
+
+    //HILT
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
 }
